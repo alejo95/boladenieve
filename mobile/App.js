@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
-
 import { styles } from './src/styles/appStyles';
 
 export default function App() {
