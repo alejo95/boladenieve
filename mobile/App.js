@@ -1,6 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
+
+import { styles } from './src/styles/appStyles';
 
 export default function App() {
   const [pomodoros, setPomodoros] = useState(0);
@@ -36,45 +38,3 @@ export default function App() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#101820',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-
-  title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#ffffff',
-  },
-
-  subtitle: {
-    marginTop: 10,
-    fontSize: 18,
-    color: '#cccccc',
-  },
-
-  counter: {
-    marginTop: 40,
-    fontSize: 22,
-    color: '#ffffff',
-  },
-
-  button: {
-    marginTop: 30,
-    backgroundColor: '#4CAF50',
-    paddingVertical: 15,
-    paddingHorizontal: 25,
-    borderRadius: 12,
-  },
-
-  buttonText: {
-    color: '#ffffff',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-});
