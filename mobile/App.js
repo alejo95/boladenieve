@@ -1,37 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
-import { useState } from 'react';
-
-import { styles } from './src/styles/appStyles';
-import PomodoroButton from './src/components/PomodoroButton';
+import React, { useState } from 'react';
+import { StyleSheet, View, Button, SafeAreaView } from 'react-native';
+// Ruta corregida según tu arquitectura src/components
+import BoladenieveSprite from './src/components/BoladenieveSprite';
 
 export default function App() {
-  const [pomodoros, setPomodoros] = useState(0);
-
-  function completePomodoro() {
-    setPomodoros(pomodoros + 1);
-  }
+  const [isTalking, setIsTalking] = useState(false);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>
-        Boladenieve 👾❄️
-      </Text>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.content}>
+        
+        {/* Componente de Boladenieve */}
+        <BoladenieveSprite isTalking={isTalking} />
 
-      <Text style={styles.subtitle}>
-        Tu mascota de productividad
-      </Text>
+        <View style={styles.buttonContainer}>
+          <Button 
+            title={isTalking ? "DETENER VOZ" : "PROBAR HABLA"} 
+            onPress={() => setIsTalking(!isTalking)} 
+            color="#6200EE"
+          />
+        </View>
 
-      <Text style={styles.counter}>
-        Pomodoros completados: {pomodoros}
-      </Text>
-
-      <PomodoroButton
-        title="Completar Pomodoro"
-        onPress={completePomodoro}
-      />
-
-      <StatusBar style="light" />
-    </View>
+      </View>
+    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#F5F5F5',
+  },
+  content: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonContainer: {
+    marginTop: 40,
+    width: '80%',
+  },
+});
