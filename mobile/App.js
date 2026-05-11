@@ -1,29 +1,64 @@
-import React, { useState } from 'react';
-import { View, Button, StatusBar } from 'react-native';
+import { View, Text } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
+
+import styles from './src/styles/appStyles';
+
+import PomodoroButton from './src/components/PomodoroButton';
 import BoladenieveSprite from './src/components/BoladenieveSprite';
-import RoomBackground from './src/components/RoomBackground';
-import roomStyles from './src/styles/roomStyles'; // Importación limpia
+
+import { PET_STATES } from './src/utils/petStates';
 
 export default function App() {
-  const [isTalking, setIsTalking] = useState(false);
+
+  const [petState, setPetState] =
+    useState(PET_STATES.IDLE);
 
   return (
-    <View style={{ flex: 1 }}>
-      <StatusBar barStyle="light-content" />
-      
-      <RoomBackground>
-        <BoladenieveSprite isTalking={isTalking} />
-      </RoomBackground>
+    <View style={styles.container}>
 
-      <View style={roomStyles.uiContainer}>
-        <View style={{ width: '80%' }}>
-          <Button 
-            title={isTalking ? "DETENER" : "HABLAR"} 
-            onPress={() => setIsTalking(!isTalking)} 
-            color="#6200EE"
-          />
-        </View>
-      </View>
+      <Text style={styles.title}>
+        Boladenieve 👾❄️
+      </Text>
+
+      <Text style={styles.subtitle}>
+        Estado actual: {petState}
+      </Text>
+
+      <BoladenieveSprite
+        petState={petState}
+      />
+
+      <PomodoroButton
+        title="Idle"
+        onPress={() =>
+          setPetState(PET_STATES.IDLE)
+        }
+      />
+
+      <PomodoroButton
+        title="Focus"
+        onPress={() =>
+          setPetState(PET_STATES.FOCUS)
+        }
+      />
+
+      <PomodoroButton
+        title="Talking"
+        onPress={() =>
+          setPetState(PET_STATES.TALKING)
+        }
+      />
+
+      <PomodoroButton
+        title="Happy"
+        onPress={() =>
+          setPetState(PET_STATES.HAPPY)
+        }
+      />
+
+      <StatusBar style="light" />
+
     </View>
   );
 }

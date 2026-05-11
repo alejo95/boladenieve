@@ -1,5 +1,6 @@
 import { TouchableOpacity, Text } from 'react-native';
-import { styles } from '../styles/appStyles';
+
+import styles from '../styles/appStyles';
 
 export default function PomodoroButton(props) {
   return (

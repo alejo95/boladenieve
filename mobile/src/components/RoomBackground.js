@@ -1,31 +1,35 @@
-import React from 'react';
 import { View, Image } from 'react-native';
-import roomStyles from '../styles/roomStyles'; // Importación limpia
+
+import roomStyles from '../styles/roomStyles';
+
+import sala from '../assets/spaces/sala.png';
+import sofa from '../assets/spaces/sofa.png';
 
 const RoomBackground = ({ children }) => {
   return (
     <View style={roomStyles.container}>
+
       <View style={roomStyles.roomContainer}>
-        
-        {/* Fondo: La Sala */}
-        <Image 
-          source={require('../assets/spaces/sala.png')} 
-          style={roomStyles.layer} 
+
+        {/* Fondo */}
+        <Image
+          source={sala}
+          style={roomStyles.background}
         />
 
-        {/* Muebles: El Sofá y Estantería */}
-        <Image 
-          source={require('../assets/spaces/sofa.png')} 
-          style={roomStyles.layer} 
+        {/* Sofá */}
+        <Image
+          source={sofa}
+          style={roomStyles.sofa}
         />
 
-        {/* Personaje: Boladenieve */}
-        <View style={roomStyles.characterSlot}>
+        {/* Mascota */}
+        <View style={roomStyles.petContainer}>
           {children}
-          <View style={roomStyles.shadow} />
         </View>
 
       </View>
+
     </View>
   );
 };

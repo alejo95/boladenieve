@@ -1,51 +1,60 @@
-import { StyleSheet, Dimensions, Platform, StatusBar } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
-const { width, height } = Dimensions.get('window');
-const screenHeight = Platform.OS === 'ios' ? height : height - StatusBar.currentHeight;
+const { width } = Dimensions.get('window');
 
 const roomStyles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#000',
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 20,
   },
+
   roomContainer: {
-    width: width,
-    height: screenHeight,
+    width: width * 0.9,
+    height: 300,
     position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  layer: {
+
+  background: {
     position: 'absolute',
-    width: width,
+    width: '100%',
     height: '100%',
     resizeMode: 'cover',
   },
-  characterSlot: {
-    position: 'absolute',
-    width: '100%',
-    alignItems: 'center',
-    zIndex: 10,
-    // Ajustado al 12% para que el personaje toque el suelo de la imagen
-    bottom: '12%', 
-  },
-  shadow: {
-    width: 100,
-    height: 12,
-    backgroundColor: 'rgba(0,0,0,0.25)',
-    borderRadius: 50,
-    marginTop: -15,
-  },
-  uiContainer: {
+
+  sofa: {
     position: 'absolute',
     bottom: 0,
-    width: '100%',
-    height: 120,
-    backgroundColor: 'white',
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
-    justifyContent: 'center',
+    width: 250,
+    height: 140,
+    resizeMode: 'contain',
+  },
+
+  petContainer: {
+    position: 'absolute',
+    bottom: 80,
     alignItems: 'center',
-    paddingBottom: 20,
-  }
+    justifyContent: 'center',
+  },
+
+  button: {
+  backgroundColor: '#6c63ff',
+  paddingVertical: 12,
+  paddingHorizontal: 24,
+  borderRadius: 12,
+  marginTop: 10,
+  width: 220,
+  alignItems: 'center',
+},
+
+buttonText: {
+  color: '#ffffff',
+  fontSize: 18,
+  fontWeight: 'bold',
+},
 });
 
 export default roomStyles;
