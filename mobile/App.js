@@ -1,43 +1,29 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Button, SafeAreaView } from 'react-native';
-// Ruta corregida según tu arquitectura src/components
+import { View, Button, StatusBar } from 'react-native';
 import BoladenieveSprite from './src/components/BoladenieveSprite';
+import RoomBackground from './src/components/RoomBackground';
+import roomStyles from './src/styles/roomStyles'; // Importación limpia
 
 export default function App() {
   const [isTalking, setIsTalking] = useState(false);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.content}>
-        
-        {/* Componente de Boladenieve */}
+    <View style={{ flex: 1 }}>
+      <StatusBar barStyle="light-content" />
+      
+      <RoomBackground>
         <BoladenieveSprite isTalking={isTalking} />
+      </RoomBackground>
 
-        <View style={styles.buttonContainer}>
+      <View style={roomStyles.uiContainer}>
+        <View style={{ width: '80%' }}>
           <Button 
-            title={isTalking ? "DETENER VOZ" : "PROBAR HABLA"} 
+            title={isTalking ? "DETENER" : "HABLAR"} 
             onPress={() => setIsTalking(!isTalking)} 
             color="#6200EE"
           />
         </View>
-
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5F5F5',
-  },
-  content: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonContainer: {
-    marginTop: 40,
-    width: '80%',
-  },
-});
